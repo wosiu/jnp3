@@ -1,31 +1,41 @@
 #ifndef SEJF_H
 #define SEJF_H
 
+#include<string>
+
+class Kontroler;
+
 class Sejf
 {
 public:
-	Sejf(const string & napis, int liczba = 42);
-	Sejf(string && napis, int liczba = 42);
+	class Kontroler
+	{
+	public:
+		//std::string operator<<();
+		//operator porównywania z boolem? żeby możliwe było zastosowanie go w "ifie"
+	private:
+		Kontroler();
+	};
+
+	Sejf(const std::string & napis, int liczba = 42);
+	//Sejf(std::string && napis, int liczba = 42);
 
 	void operator+=(int x);
 	void operator-=(int x);
 	void operator*=(int x);
-	int operator[](int x); //czy nie powinien być unsigned?
+	int16_t operator[](unsigned int x); //czy nie powinien być unsigned?
 
-	Kontroler kontroler();
+	Kontroler kontroler(){ return instancja;}
 
 private:
-	string _napis;
-	int _liczba;
+	std::string napis;
+	int liczba;
+	bool manipulacja = false;
+	bool wlamanie = false;
 
-	class Kontroler
-	{
-	public:
-		string operator<<();
+	void setLiczba(int x);
 
-
-	};
-
+	Kontroler instancja;
 };
 
 #endif
