@@ -1,26 +1,28 @@
 #ifndef SEJF_H
 #define SEJF_H
 
-#include<string>
+#include <string>
+#include "kontroler.h"
+
+class Kontroler;
 
 class Sejf
 {
-public:
-	Sejf(const std::string & napis, int liczba = 42);
-	//Sejf(std::string && napis, int liczba = 42);
+	public:
+		Sejf(const std::string & napis, int liczba = 42);
+		//Sejf(std::string && napis, int liczba = 42);
+		~Sejf();
 
-	void operator+=(int x);
-	void operator-=(int x);
-	void operator*=(int x);
-	int16_t operator[](unsigned int x); //czy nie powinien być unsigned?
+		void operator+=(int x);
+		void operator-=(int x);
+		void operator*=(int x);
+		int16_t operator[](unsigned int x); //czy nie powinien być unsigned?
 
-private:
-	std::string napis;
-	int liczba;
-	bool manipulacja = false;
-	bool wlamanie = false;
-
-	void setLiczba(int x);
+	private:
+		std::string napis;
+		int liczba;
+		Kontroler* kontroler_instancja;
+		void setLiczba(int x);
 };
 
 #endif

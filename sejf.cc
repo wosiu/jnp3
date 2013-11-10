@@ -6,11 +6,17 @@ Sejf::Sejf(const std::string & napis, int liczba)
 {
 	this->napis = napis;
 	this->liczba = liczba;
+	this->kontroler_instancja = new Kontroler();
+}
+
+Sejf::~Sejf()
+{
+	delete kontroler_instancja;
 }
 
 void Sejf::setLiczba(int x)
 {
-	manipulacja = true;
+	kontroler_instancja->manipulacja = true;
 	liczba = x;
 }
 
@@ -20,7 +26,7 @@ int16_t Sejf::operator[](unsigned int x)
 		return -1;
 
 	if(liczba <= 0 ){
-		wlamanie = true;
+		kontroler_instancja->wlamanie = true;
 		return -1;
 	}
 
