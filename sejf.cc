@@ -59,7 +59,7 @@ void Sejf::operator*=( int x )
 	return;
 }
 
-Kontroler& Sejf::kontroler()
+const Kontroler* Sejf::kontroler()
 {
-	return *kontroler_instancja;
+	return kontroler_instancja;
 }
