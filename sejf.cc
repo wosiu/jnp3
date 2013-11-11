@@ -21,6 +21,18 @@ Sejf::Sejf( std::string&& napis, int liczba )
 	this->kontroler_instancja = new Kontroler( liczba );
 }
 
+void Sejf::operator=( Sejf && rhs)
+{
+	this->napis = rhs.napis;
+//	rhs.napis = this->napis; ///ACCEK: pytanie czy nie rhs.napis = this->napis; (podobnie w konstruktrze move)
+}
+
+Sejf::Sejf(Sejf && rhs)
+{
+	this->napis = rhs.napis;
+	kontroler_instancja = nullptr;
+}
+
 Sejf::~Sejf()
 {
 	delete kontroler_instancja;

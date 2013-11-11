@@ -86,7 +86,14 @@ void swap_test()
 }*/
 
 #include <typeinfo>
+#include <algorithm>
 int main(){
+
+	Sejf z0("aaaa");
+	Sejf z1("bbbb");
+	swap(z0,z1);
+	cout << (char)z0[1] << endl;
+
 
 /*
 	int a = 1;
