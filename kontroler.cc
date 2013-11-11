@@ -13,7 +13,6 @@ std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler* k )
 	return wyjscie;
 }
 
-
 Kontroler::Kontroler()
 {
 	wlamanie = false;
