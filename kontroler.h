@@ -11,9 +11,8 @@ class Kontroler
 {
 friend Sejf;
 public:
-	//std::string operator<<();
 	//operator porównywania z boolem? żeby możliwe było zastosowanie go w "ifie"11
-	friend std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler &k );
+	friend std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler* k );
 	explicit operator bool();
 
 private:
