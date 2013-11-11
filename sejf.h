@@ -26,6 +26,9 @@ public:
 	const Kontroler & kontroler();
 
 private:
+	//napis jest jedynym zmiennikiem sejfu - jego zawartoscia
+	//operacje swap uznajemy jako operacje zmiany zawartosci dwoch sejfow
+	//czyli kontrolel, a w tym liczba dostepow pozostaje wraz z sejfem
 	std::string napis;
 	Kontroler* kontroler_instancja;
 	void setLiczba( int x );

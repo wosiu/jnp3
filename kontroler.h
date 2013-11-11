@@ -21,6 +21,7 @@ public:
 
 private:
 	Kontroler( int liczba );
+	// ilosc dostepow, ktore pozostaly
 	int liczba;
 	bool wlamanie, manipulacja;
 	unsigned long long chuj[1000];

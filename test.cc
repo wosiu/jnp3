@@ -69,16 +69,19 @@ void bool_test()
 
 void swap_test()
 {
-	Sejf s1("aaa",0);
-	Sejf s2("bbb");
+	Sejf s1("aaa");
+	Sejf s2("bbb",0);
 
 	swap( s1, s2 );
-	assert( s1[1] == (int)b );
-	assert( ! s1.kontroler() );
-	assert( s2.kontroler() );
+
+	assert( s1[1] == (int)'b' );
+	assert( s1.kontroler() );
+	assert( ! s2.kontroler() );
 
 	//to powinno dawac blad kompilacji:
 	//Sejf s3( s2 );
+	//ale to juz tak, bo taki konstruktor zrobilismy, zeby dzialal swap:
+	//Sejf s3( move(s2) );
 }
 
 /*int& c( int &l ) {
@@ -88,12 +91,6 @@ void swap_test()
 #include <typeinfo>
 #include <algorithm>
 int main(){
-
-	Sejf z0("aaaa");
-	Sejf z1("bbbb");
-	swap(z0,z1);
-	cout << (char)z0[1] << endl;
-
 
 /*
 	int a = 1;
