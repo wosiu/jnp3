@@ -72,7 +72,7 @@ void Sejf::operator-=( int x )
 	setLiczba(kontroler_instancja->liczba - x);
 }
 
-const Kontroler& Sejf::kontroler()
+const Kontroler & Sejf::kontroler()
 {
 	return *kontroler_instancja;
 }

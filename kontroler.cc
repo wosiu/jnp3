@@ -26,11 +26,23 @@ std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler& k )
 	return wyjscie;
 }
 
+/*void Kontroler::operator=( const Kontroler & b ) {
+	std::cout << "wszedl" << std::endl;
+}*/
+
 Kontroler::Kontroler( int liczba )
 {
 	this->liczba = liczba;
 	wlamanie = false;
 	manipulacja = false;
+}
+
+Kontroler::Kontroler( const Kontroler& rhs )
+{
+	//std::cout << "const Kontroler& rhs" << std::endl;
+	//this = rhs;
+	//ACEK: jak to zrobic, zeby dzialalo auto tak jak chcemy
+	//czy moze przepisac wskaźniki z pól z rhs na pola z obecnego (this)
 }
 
 Kontroler::operator bool() const

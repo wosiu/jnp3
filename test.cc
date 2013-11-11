@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include "sejf.h"
+#include "kontroler.h"
 
 using namespace std;
 
@@ -55,21 +56,42 @@ void bool_test()
 	Sejf s2( "abcd", 0 );
 	auto k2 = s2.kontroler();
     assert ( ! k2 );
+
+
+	// to musi dawac blad kompilacji:
+	//Sejf s2( "abcd", 0 );
+	//Sejf s3( "abcd", 0 );
+
+	//if ( s2.kontroler() < s3.kontroler() )
+	//	cout << "HMM" << endl;
+
 }
 
-
+int& c( int &l ) {
+	return l;
+}
+#include <typeinfo>
 int main(){
-	kontroler_test();
-	bool_test();
-
 
 /*
-	Sejf s2( "abcd", 0 );
-	Sejf s3( "abcd", 0 );
-
-	if ( s2.kontroler() < s3.kontroler() )
-		cout << "HMM" << endl;
+	int a = 1;
+	int b = c(a);
+	a++;
+	cout << b << endl;
 */
+	Sejf s1("abcd",0);
+	//const Kontroler* k1 = &( s1.kontroler() );
+	const Kontroler & k1 = s1.kontroler();
+	//Kontrel k1 = s1.kontroler();
+	//auto k1 = s1.kontroler();
+	//cout << sizeof( k1 ) << endl;
+	//cout << typeid(k1).name() << endl;
+	cout << (k1);
+	s1 += 1;
+	cout << (k1);
+
+	//kontroler_test();
+	bool_test();
 
 	return 0;
 }
