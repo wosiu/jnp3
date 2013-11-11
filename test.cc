@@ -41,5 +41,6 @@ void kontroler_test()
 
 int main(){
 	kontroler_test();
+
 	return 0;
 }

@@ -25,7 +25,6 @@ public:
 
 private:
 	std::string napis;
-	int liczba;
 	Kontroler* kontroler_instancja;
 	void setLiczba( int x );
 };

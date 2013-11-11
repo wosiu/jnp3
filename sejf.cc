@@ -35,7 +35,7 @@ int16_t Sejf::operator[]( unsigned int x )
 	if ( x < 0 || x >= napis.size() )
 		return -1;
 
-	if ( liczba == 0 ){
+	if ( kontroler_instancja->liczba == 0 ){
 		kontroler_instancja->wlamanie = true;
 		return -1;
 	}
