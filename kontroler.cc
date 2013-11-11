@@ -17,6 +17,6 @@ std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler &k )
 Kontroler::Kontroler()
 {
 	wlamanie = false;
-	manipulacja = true; //TODO poprawic na false
+	manipulacja = false;
 }
 

@@ -58,9 +58,8 @@ void Sejf::operator*=(int x)
 	setLiczba(liczba * x);
 	return;
 }
-/*
-Kontroler Sejf::kontroler()
+
+Kontroler& Sejf::kontroler()
 {
-	return instancja;
+	return *kontroler_instancja;
 }
-*/
