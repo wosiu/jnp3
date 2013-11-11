@@ -9,15 +9,15 @@ class Sejf;
 
 class Kontroler
 {
-	friend Sejf;
-	public:
-		//std::string operator<<();
-		//operator porównywania z boolem? żeby możliwe było zastosowanie go w "ifie"11
-		friend std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler &k );
+friend Sejf;
+public:
+	//std::string operator<<();
+	//operator porównywania z boolem? żeby możliwe było zastosowanie go w "ifie"11
+	friend std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler &k );
 
-	private:
-		Kontroler();
-		bool wlamanie, manipulacja;
+private:
+	Kontroler();
+	bool wlamanie, manipulacja;
 };
 
 #endif
