@@ -13,9 +13,14 @@ std::ostream & operator<< ( std::ostream &wyjscie, const Kontroler &k )
 	return  wyjscie;
 }
 
-Kontroler::Kontroler()
+Kontroler::Kontroler(int liczba)
 {
+	this->liczba = liczba;
 	wlamanie = false;
 	manipulacja = false;
 }
 
+Kontroler::operator bool()
+{
+	return ( liczba > 0 );
+}

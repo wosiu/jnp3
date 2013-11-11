@@ -7,8 +7,7 @@ Sejf::Sejf( const std::string & napis, int liczba )
 	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ) liczba = ILOSC_DOMYSLNA_DOSTEPOW;
 
 	this->napis = napis;
-	this->liczba = liczba;
-	this->kontroler_instancja = new Kontroler();
+	this->kontroler_instancja = new Kontroler(liczba);
 }
 
 Sejf::Sejf( std::string&& napis, int liczba )
@@ -17,8 +16,7 @@ Sejf::Sejf( std::string&& napis, int liczba )
 
 ///Trzeba sprawdzić, czy jest ok rvalue (pewnie nie)
 	this->napis = napis;
-	this->liczba = liczba;
-	this->kontroler_instancja = new Kontroler();
+	this->kontroler_instancja = new Kontroler(liczba);
 }
 
 Sejf::~Sejf()
@@ -29,7 +27,7 @@ Sejf::~Sejf()
 void Sejf::setLiczba( int x )
 {
 	kontroler_instancja->manipulacja = true;
-	liczba = x;
+	kontroler_instancja->liczba = x;
 }
 
 int16_t Sejf::operator[]( unsigned int x )
@@ -42,7 +40,7 @@ int16_t Sejf::operator[]( unsigned int x )
 		return -1;
 	}
 
-	--liczba;
+	--kontroler_instancja->liczba;
 	return napis[x];
 }
 
@@ -53,23 +51,23 @@ int16_t Sejf::operator[]( unsigned int x )
  */
 void Sejf::operator+=( int x )
 {
-	if (x < 0 || liczba + x > LIMIT_DOSTEPOW) return;
+	if (x < 0 || kontroler_instancja->liczba + x > LIMIT_DOSTEPOW) return;
 
-	setLiczba( liczba + x );
+	setLiczba( kontroler_instancja->liczba + x );
 }
 
 void Sejf::operator*=( int x )
 {
-	if ( x <= 0 || liczba * x > LIMIT_DOSTEPOW) return;
+	if ( x <= 0 || kontroler_instancja->liczba * x > LIMIT_DOSTEPOW) return;
 
-	setLiczba( liczba * x );
+	setLiczba( kontroler_instancja->liczba * x );
 }
 
 void Sejf::operator-=( int x )
 {
-	if ( x < 0 || x > liczba ) return;
+	if ( x < 0 || x > kontroler_instancja->liczba ) return;
 
-	setLiczba(liczba - x);
+	setLiczba(kontroler_instancja->liczba - x);
 }
 
 Kontroler& Sejf::kontroler()

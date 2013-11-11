@@ -17,10 +17,10 @@ public:
 	Sejf( std::string && napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
 	~Sejf();
 
-	void operator+=( int x );
-	void operator-=( int x );
-	void operator*=( int x );
-	int16_t operator[]( unsigned int x );
+	void operator +=( int x );
+	void operator -=( int x );
+	void operator *=( int x );
+	int16_t operator []( unsigned int x );
 	Kontroler& kontroler();
 
 private:
