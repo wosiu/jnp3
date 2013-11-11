@@ -14,7 +14,7 @@ class Sejf
 public:
 	//W przypadku próby tworzenia niepoprawnego sejfu zostaje stworzony sejf o domyślnej liczbe dostępów.
 	Sejf( const std::string & napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
-	//Sejf( std::string && napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
+	Sejf( std::string && napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
 	~Sejf();
 
 	void operator+=( int x );

@@ -10,16 +10,16 @@ Sejf::Sejf( const std::string & napis, int liczba )
 	this->liczba = liczba;
 	this->kontroler_instancja = new Kontroler();
 }
-//
-// Sejf( std::string&& napis, int liczba )
-// {
-	//~ if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ) liczba = ILOSC_DOMYSLNA_DOSTEPOW;
-//
-// ///Trzeba sprawdzić, czy jest ok rvalue (pewnie nie)
-	//~ this->napis = napis;
-	//~ this->liczba = liczba;
-	//~ this->kontroler_instancja = new Kontroler();
-// }
+
+Sejf::Sejf( std::string&& napis, int liczba )
+{
+	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ) liczba = ILOSC_DOMYSLNA_DOSTEPOW;
+
+///Trzeba sprawdzić, czy jest ok rvalue (pewnie nie)
+	this->napis = napis;
+	this->liczba = liczba;
+	this->kontroler_instancja = new Kontroler();
+}
 
 Sejf::~Sejf()
 {
