@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Sejf::Sejf(const std::string & napis, int liczba)
+Sejf::Sejf( const std::string & napis, int liczba )
 {
 	this->napis = napis;
 	this->liczba = liczba;
@@ -20,12 +20,12 @@ void Sejf::setLiczba(int x)
 	liczba = x;
 }
 
-int16_t Sejf::operator[](unsigned int x)
+int16_t Sejf::operator[]( unsigned int x )
 {
-	if( x < 0 || x >= napis.size() )
+	if ( x < 0 || x >= napis.size() )
 		return -1;
 
-	if(liczba <= 0 ){
+	if ( liczba <= 0 ){
 		kontroler_instancja->wlamanie = true;
 		return -1;
 	}
@@ -35,27 +35,27 @@ int16_t Sejf::operator[](unsigned int x)
 
 }
 
-void Sejf::operator+=(int x)
+void Sejf::operator+=( int x )
 {
 	if (x < 0) return;
 
-	setLiczba(liczba + x);
+	setLiczba( liczba + x );
 	return;
 }
 
-void Sejf::operator-=(int x)
+void Sejf::operator-=( int x )
 {
-	if (x < 0 || x > liczba) return;
+	if ( x < 0 || x > liczba ) return;
 
 	setLiczba(liczba - x);
 	return;
 }
 
-void Sejf::operator*=(int x)
+void Sejf::operator*=( int x )
 {
-	if (x <= 0) return;
+	if ( x <= 0 ) return;
 
-	setLiczba(liczba * x);
+	setLiczba( liczba * x );
 	return;
 }
 
