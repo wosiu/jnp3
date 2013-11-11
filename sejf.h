@@ -21,7 +21,7 @@ public:
 	void operator-=( int x );
 	void operator*=( int x );
 	int16_t operator[]( unsigned int x );
-	Kontroler& kontroler();
+	const Kontroler* kontroler();
 
 
 private:
