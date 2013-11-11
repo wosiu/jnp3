@@ -67,9 +67,24 @@ void bool_test()
 
 }
 
-int& c( int &l ) {
-	return l;
+void swap_test()
+{
+	Sejf s1("aaa",0);
+	Sejf s2("bbb");
+
+	swap( s1, s2 );
+	assert( s1[1] == (int)b );
+	assert( ! s1.kontroler() );
+	assert( s2.kontroler() );
+
+	//to powinno dawac blad kompilacji:
+	//Sejf s3( s2 );
 }
+
+/*int& c( int &l ) {
+	return l;
+}*/
+
 #include <typeinfo>
 int main(){
 
@@ -79,6 +94,7 @@ int main(){
 	a++;
 	cout << b << endl;
 */
+
 	Sejf s1("abcd",0);
 	//const Kontroler* k1 = &( s1.kontroler() );
 	const Kontroler & k1 = s1.kontroler();
@@ -92,6 +108,7 @@ int main(){
 
 	//kontroler_test();
 	bool_test();
+	swap_test();
 
 	return 0;
 }
