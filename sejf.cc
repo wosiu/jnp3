@@ -2,13 +2,17 @@
 
 using namespace std;
 
+
 Sejf::Sejf( const std::string & napis, int liczba )
 {
 	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
 		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
 	}
 	this->napis = napis;
-	this->kontroler_instancja = new Kontroler( liczba );
+
+	this->wlamanie = false;
+	this->manipulacja = false;
+	this->liczba = liczba;
 }
 
 Sejf::Sejf( std::string&& napis, int liczba )
@@ -16,32 +20,28 @@ Sejf::Sejf( std::string&& napis, int liczba )
 	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
 		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
 	}
-///Trzeba sprawdzić, czy jest ok rvalue (pewnie nie)
+///Trzeba sprawdzić, czy jest ok rvalue (pewnie nie) NIE JEST, BUAAHAHAHH
 	this->napis = napis;
-	this->kontroler_instancja = new Kontroler( liczba );
+
+	this->wlamanie = false;
+	this->manipulacja = false;
+	this->liczba = liczba;
 }
 
 void Sejf::operator=( Sejf && rhs)
 {
 	this->napis = rhs.napis;
-//	rhs.napis = this->napis; ///ACCEK: pytanie czy nie rhs.napis = this->napis; (podobnie w konstruktrze move)
 }
 
 Sejf::Sejf(Sejf && rhs)
 {
 	this->napis = rhs.napis;
-	kontroler_instancja = nullptr;
-}
-
-Sejf::~Sejf()
-{
-	delete kontroler_instancja;
 }
 
 void Sejf::setLiczba( int x )
 {
-	kontroler_instancja->manipulacja = true;
-	kontroler_instancja->liczba = x;
+	manipulacja = true;
+	liczba = x;
 }
 
 int16_t Sejf::operator[]( unsigned int x )
@@ -49,42 +49,42 @@ int16_t Sejf::operator[]( unsigned int x )
 	if ( x < 0 || x >= napis.size() )
 		return -1;
 
-	if ( kontroler_instancja->liczba == 0 ){
-		kontroler_instancja->wlamanie = true;
+	if ( liczba == 0 ){
+		wlamanie = true;
 		return -1;
 	}
 
-	( kontroler_instancja->liczba )--;
+	liczba--;
 	return napis[x];
 }
 
 /*
- * W przypadku próby zmiany liczby pozostałej liczby dostępu ponad limit (+=, *=),
- * nie podejmowane są żadne działania,
- * w szczególności, nie zostaje to uznane za próbę manipulacji.
+ * W przypadku próby zmiany liczby pozostałej liczby dostępu ponad limit
+ * (+=, *=), nie podejmowane są żadne działania, w szczególności,
+ * nie zostaje to uznane za próbę manipulacji.
  */
 void Sejf::operator+=( int x )
 {
-	if ( x < 0 || kontroler_instancja->liczba + x > LIMIT_DOSTEPOW ) return;
+	if ( x < 0 || liczba + x > LIMIT_DOSTEPOW ) return;
 
-	setLiczba( kontroler_instancja->liczba + x );
+	setLiczba( liczba + x );
 }
 
 void Sejf::operator*=( int x )
 {
-	if ( x <= 0 || kontroler_instancja->liczba * x > LIMIT_DOSTEPOW ) return;
+	if ( x <= 0 || liczba * x > LIMIT_DOSTEPOW ) return;
 
-	setLiczba( kontroler_instancja->liczba * x );
+	setLiczba( liczba * x );
 }
 
 void Sejf::operator-=( int x )
 {
-	if ( x < 0 || x > kontroler_instancja->liczba ) return;
+	if ( x < 0 || x > liczba ) return;
 
-	setLiczba(kontroler_instancja->liczba - x);
+	setLiczba( liczba - x );
 }
 
-const Kontroler & Sejf::kontroler()
+Kontroler Sejf::kontroler()
 {
-	return *kontroler_instancja;
+	return Kontroler( this );
 }

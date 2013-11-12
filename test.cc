@@ -2,6 +2,8 @@
 #include <assert.h>
 #include <sstream>
 #include <string>
+#include <typeinfo>
+#include <algorithm>
 #include "sejf.h"
 #include "kontroler.h"
 
@@ -9,6 +11,21 @@ using namespace std;
 
 void kontroler_test()
 {
+/*
+
+	Sejf s1("abcd",2);
+	//const Kontroler* k1 = &( s1.kontroler() );
+	//const Kontroler & k1 = s1.kontroler(); //chcemy zeby auto dzialalo tak
+	//Kontrel k1 = s1.kontroler();
+	auto k1 = s1.kontroler();
+	//cout << sizeof( k1 ) << endl;
+	//cout << typeid(k1).name() << endl;
+	cout << (s1.kontroler());
+	cout << (k1);
+	s1 += 1;
+	cout << (k1);
+*/
+
 	Sejf s1( "abcd", 1 );
 	auto k1 = s1.kontroler();
 
@@ -42,7 +59,8 @@ void kontroler_test()
 void bool_test()
 {
 	Sejf s0( "abcd", 0 );
-    assert ( ! s0.kontroler() );
+
+	assert ( ! s0.kontroler() );
 
 	Sejf s1( "abcd", 2 );
     assert ( s1.kontroler() );
@@ -57,14 +75,14 @@ void bool_test()
 	auto k2 = s2.kontroler();
     assert ( ! k2 );
 
+	// to musi dawac blad kompilacji (odkomnetowac i sprawdzic!):
+	/*
+	Sejf s2( "abcd", 0 );
+	Sejf s3( "abcd", 0 );
 
-	// to musi dawac blad kompilacji:
-	//Sejf s2( "abcd", 0 );
-	//Sejf s3( "abcd", 0 );
-
-	//if ( s2.kontroler() < s3.kontroler() )
-	//	cout << "HMM" << endl;
-
+	if ( s2.kontroler() < s3.kontroler() )
+		cout << "HMM" << endl;
+    */
 }
 
 void swap_test()
@@ -78,41 +96,19 @@ void swap_test()
 	assert( s1.kontroler() );
 	assert( ! s2.kontroler() );
 
-	//to powinno dawac blad kompilacji:
+	//to powinno dawac blad kompilacji (odkomnetowac i sprawdzic!):
 	//Sejf s3( s2 );
-	//ale to juz tak, bo taki konstruktor zrobilismy, zeby dzialal swap:
+	//ale to juz nie, bo taki konstruktor zrobilismy, zeby dzialal swap:
 	//Sejf s3( move(s2) );
 }
 
-/*int& c( int &l ) {
-	return l;
-}*/
 
-#include <typeinfo>
-#include <algorithm>
 int main(){
 
-/*
-	int a = 1;
-	int b = c(a);
-	a++;
-	cout << b << endl;
-*/
-
-	Sejf s1("abcd",0);
-	//const Kontroler* k1 = &( s1.kontroler() );
-	const Kontroler & k1 = s1.kontroler();
-	//Kontrel k1 = s1.kontroler();
-	//auto k1 = s1.kontroler();
-	//cout << sizeof( k1 ) << endl;
-	//cout << typeid(k1).name() << endl;
-	cout << (k1);
-	s1 += 1;
-	cout << (k1);
-
-	//kontroler_test();
+	kontroler_test();
 	bool_test();
 	swap_test();
 
+    cout << "OK :)" << endl;
 	return 0;
 }
