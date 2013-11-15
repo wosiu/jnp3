@@ -1,3 +1,11 @@
+/**
+  * JNP, zadanie 3
+  * Rafał Soszyński i Michał Woś
+  * rs335786 + mw336071
+  *
+  * CCFLAGS -std=c++11
+  */
+
 #ifndef SEJF_H
 #define SEJF_H
 
