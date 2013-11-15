@@ -1,6 +1,6 @@
 #include "kontroler.h"
 
-std::ostream & operator<<( std::ostream &wyjscie, const Kontroler& k )
+std::ostream & operator<<( std::ostream & wyjscie, const Kontroler & k )
 {
 	if ( k.sejf->wlamanie ) {
 		wyjscie << "ALARM: WLAMANIE\n";

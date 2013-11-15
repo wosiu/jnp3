@@ -21,8 +21,8 @@ public:
 	Sejf( const std::string & napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
 	Sejf( std::string && napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
 	void operator=( Sejf && rhs );
-	friend std::ostream & operator<<( std::ostream &wyjscie,
-									const Kontroler& k );
+	friend std::ostream & operator<<( std::ostream & wyjscie,
+									const Kontroler & k );
 	Sejf(Sejf && rhs);
 
 	void operator+=( int x );

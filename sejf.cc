@@ -3,39 +3,30 @@
 using namespace std;
 
 
-Sejf::Sejf( const std::string & napis, int liczba )
+Sejf::Sejf( const std::string & napis, int liczba ) : napis(napis), wlamanie(false), manipulacja(false)
 {
 	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
 		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
 	}
-	this->napis = napis;
-
-	this->wlamanie = false;
-	this->manipulacja = false;
 	this->liczba = liczba;
 }
 
-Sejf::Sejf( std::string&& napis, int liczba )
+Sejf::Sejf( std::string && napis, int liczba ) :  napis(napis), wlamanie(false), manipulacja(false)
 {
 	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
 		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
 	}
-///Trzeba sprawdzić, czy jest ok rvalue (pewnie nie) NIE JEST, BUAAHAHAHH
-	this->napis = napis;
-
-	this->wlamanie = false;
-	this->manipulacja = false;
 	this->liczba = liczba;
 }
 
 void Sejf::operator=( Sejf && rhs)
 {
-	this->napis = rhs.napis;
+	this->napis = std::move(rhs.napis);
 }
 
 Sejf::Sejf(Sejf && rhs)
 {
-	this->napis = rhs.napis;
+	this->napis = std::move(rhs.napis);
 }
 
 void Sejf::setLiczba( int x )
@@ -54,7 +45,7 @@ int16_t Sejf::operator[]( unsigned int x )
 		return -1;
 	}
 
-	liczba--;
+	--liczba;
 	return napis[x];
 }
 
