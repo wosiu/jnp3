@@ -23,10 +23,14 @@ Sejf::Sejf( std::string && napis, int liczba ) : napis( move( napis ) ),
 
 void Sejf::operator=( Sejf && rhs )
 {
-	this->napis = move(rhs.napis);
+	this->napis = move( rhs.napis );
+	this->liczba = rhs.liczba;
+    this->wlamanie = rhs.wlamanie;
+    this->manipulacja = rhs.manipulacja;
 }
 
-Sejf::Sejf(Sejf && rhs) : napis ( move( rhs.napis ) )
+Sejf::Sejf( Sejf && rhs ) : napis ( move( rhs.napis ) ), liczba( rhs.liczba ),
+					wlamanie( rhs.wlamanie ), manipulacja( rhs.manipulacja )
 {
 }
 

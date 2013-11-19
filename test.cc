@@ -87,14 +87,24 @@ void bool_test()
 
 void swap_test()
 {
-	Sejf s1("aaa");
-	Sejf s2("bbb",0);
-
+	/* case 1 */
+	Sejf s1( "aaa", 1 ), s2( "bbb", 0 );
+	auto k1 = s1.kontroler();
 	swap( s1, s2 );
+	if ( k1 ) assert( false );
 
-	assert( s1[1] == (int)'b' );
-	assert( s1.kontroler() );
-	assert( ! s2.kontroler() );
+	/* case 2 */
+
+	Sejf s3("aaa");
+	Sejf s4("bbb", 0);
+
+	swap( s3, s4 );
+
+	assert( s3[1] == -1 );
+	assert( s4[1] == (int)'a' );
+	assert( !s3.kontroler() );
+	assert( s4.kontroler() );
+
 
 	//to powinno dawac blad kompilacji (odkomnetowac i sprawdzic!):
 	//Sejf s3( s2 );
