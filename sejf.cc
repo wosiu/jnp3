@@ -40,9 +40,9 @@ void Sejf::setLiczba( int x )
 	liczba = x;
 }
 
-int16_t Sejf::operator[]( unsigned int x )
+int16_t Sejf::operator[]( int x )
 {
-	if ( x < 0 || x >= napis.size() )
+	if ( x < 0 || (unsigned int)x >= napis.size() )
 		return -1;
 
 	if ( liczba == 0 ){
