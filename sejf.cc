@@ -3,7 +3,8 @@
 using namespace std;
 
 
-Sejf::Sejf( const std::string & napis, int liczba ) : napis(napis), wlamanie(false), manipulacja(false)
+Sejf::Sejf( const std::string & napis, int liczba ) : napis( napis ) ,
+										wlamanie( false ), manipulacja( false )
 {
 	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
 		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
@@ -11,7 +12,8 @@ Sejf::Sejf( const std::string & napis, int liczba ) : napis(napis), wlamanie(fal
 	this->liczba = liczba;
 }
 
-Sejf::Sejf( std::string && napis, int liczba ) :  napis(napis), wlamanie(false), manipulacja(false)
+Sejf::Sejf( std::string && napis, int liczba ) : napis( move( napis ) ),
+										wlamanie( false ), manipulacja( false )
 {
 	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
 		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
@@ -19,14 +21,13 @@ Sejf::Sejf( std::string && napis, int liczba ) :  napis(napis), wlamanie(false),
 	this->liczba = liczba;
 }
 
-void Sejf::operator=( Sejf && rhs)
+void Sejf::operator=( Sejf && rhs )
 {
-	this->napis = std::move(rhs.napis);
+	this->napis = move(rhs.napis);
 }
 
-Sejf::Sejf(Sejf && rhs)
+Sejf::Sejf(Sejf && rhs) : napis ( move( rhs.napis ) )
 {
-	this->napis = std::move(rhs.napis);
 }
 
 void Sejf::setLiczba( int x )
