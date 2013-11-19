@@ -13,9 +13,8 @@ std::ostream & operator<<( std::ostream & wyjscie, const Kontroler & k )
 	return wyjscie;
 }
 
-Kontroler::Kontroler( Sejf *sejf )
+Kontroler::Kontroler( Sejf *sejf ) : sejf( sejf )
 {
-	this->sejf = sejf;
 }
 
 Kontroler::operator bool() const

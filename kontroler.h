@@ -26,7 +26,7 @@ public:
 	explicit operator bool() const;
 
 private:
-    Sejf *sejf;
+    const Sejf *sejf;
 	Kontroler( Sejf *sejf );
 };
 
