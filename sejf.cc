@@ -68,7 +68,8 @@ void Sejf::operator+=( int x )
 
 void Sejf::operator*=( int x )
 {
-	if ( x <= 0 || liczba * x > LIMIT_DOSTEPOW ) return;
+	if ( x <= 0 && liczba > 0 ) return;
+	if ( liczba * x > LIMIT_DOSTEPOW ) return;
 
 	setLiczba( liczba * x );
 }
