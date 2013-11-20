@@ -27,7 +27,7 @@ public:
 
 private:
     const Sejf *sejf;
-	Kontroler( Sejf *sejf );
+	Kontroler( const Sejf *sejf );
 };
 
 #endif

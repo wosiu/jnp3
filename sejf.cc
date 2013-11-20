@@ -80,7 +80,7 @@ void Sejf::operator-=( int x )
 	setLiczba( liczba - x );
 }
 
-Kontroler Sejf::kontroler()
+const Kontroler Sejf::kontroler() const
 {
 	return Kontroler( this );
 }

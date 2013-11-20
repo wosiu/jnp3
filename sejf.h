@@ -38,7 +38,7 @@ public:
 	void operator*=( int x );
 	int16_t operator[]( int x );
 
-	Kontroler kontroler();
+	const Kontroler kontroler() const;
 
 private:
 	// napis jest jedynym zamiennym elementem sejfu - jego zawartoscia operacje

@@ -13,7 +13,7 @@ std::ostream & operator<<( std::ostream & wyjscie, const Kontroler & k )
 	return wyjscie;
 }
 
-Kontroler::Kontroler( Sejf *sejf ) : sejf( sejf )
+Kontroler::Kontroler( const Sejf *sejf ) : sejf( sejf )
 {
 }
 
