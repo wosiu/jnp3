@@ -384,15 +384,13 @@ On 2013-11-10 00:31, Maciej Szeszko wrote:
 
 }
 
-const long long ILE = UINT_MAX; // Zmien na tyle, ile maksymalnie odczytow dopuszczasz
+const long long ILE = 1000000LL; // Zmien na tyle, ile maksymalnie odczytow dopuszczasz
 
 void testy_kontrowersyjne() {
   cout << "Testy kontrowersyjne" << endl;
   // Kontrowersyjne dlatego, ze zaleza od implemenatacji
-  // !!!! my mamy inne zalozenia, wiec ponizsze nie dziala:
-
   string str = "puchacz_przez_ch";
-  /*
+
   Sejf s(str, 1);
   s *= ILE;
   s -= ILE;
@@ -406,7 +404,7 @@ void testy_kontrowersyjne() {
   pobierz(s, str);
   assert(!s.kontroler());
   pobierz(s, str, false);
-  */
+
 
  Sejf s2(str, 10);
  s2 *= ILE;

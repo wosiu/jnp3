@@ -112,7 +112,6 @@ void swap_test()
 	//Sejf s3( move(s2) );
 }
 
-
 int main(){
 
 	kontroler_test();

@@ -6,19 +6,26 @@ using namespace std;
 Sejf::Sejf( const std::string & napis, int liczba ) : napis( napis ) ,
 										wlamanie( false ), manipulacja( false )
 {
-	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
-		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
-	}
-	this->liczba = liczba;
+	init( liczba );
 }
 
 Sejf::Sejf( std::string && napis, int liczba ) : napis( move( napis ) ),
 										wlamanie( false ), manipulacja( false )
 {
-	if ( liczba < 0 || liczba > LIMIT_DOSTEPOW ){
+	init( liczba );
+}
+
+void Sejf::init( int liczba )
+{
+	if ( liczba < 0 || (unsigned long long)liczba > LIMIT_DOSTEPOW ){
 		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
 	}
 	this->liczba = liczba;
+}
+
+Sejf::Sejf( Sejf && rhs ) : napis ( move( rhs.napis ) ), liczba( rhs.liczba ),
+					wlamanie( rhs.wlamanie ), manipulacja( rhs.manipulacja )
+{
 }
 
 void Sejf::operator=( Sejf && rhs )
@@ -27,11 +34,6 @@ void Sejf::operator=( Sejf && rhs )
 	this->liczba = rhs.liczba;
     this->wlamanie = rhs.wlamanie;
     this->manipulacja = rhs.manipulacja;
-}
-
-Sejf::Sejf( Sejf && rhs ) : napis ( move( rhs.napis ) ), liczba( rhs.liczba ),
-					wlamanie( rhs.wlamanie ), manipulacja( rhs.manipulacja )
-{
 }
 
 void Sejf::setLiczba( int x )
@@ -76,7 +78,7 @@ void Sejf::operator*=( int x )
 
 void Sejf::operator-=( int x )
 {
-	if ( x < 0 || x > liczba ) return;
+	if ( x < 0 || (unsigned long long)x > liczba ) return;
 
 	setLiczba( liczba - x );
 }

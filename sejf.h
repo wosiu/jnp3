@@ -13,8 +13,8 @@
 #include <iostream>
 #include "kontroler.h"
 
-const static int LIMIT_DOSTEPOW = 1e6;
-const static int ILOSC_DOMYSLNA_DOSTEPOW = 42;
+const static unsigned long long LIMIT_DOSTEPOW = 1000000ULL;
+const static unsigned long long ILOSC_DOMYSLNA_DOSTEPOW = 42ULL;
 
 class Kontroler;
 
@@ -28,16 +28,14 @@ public:
 	// dostepow) zostaje stworzony sejf o domyślnej liczbe dostępów.
 	Sejf( const std::string & napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
 	Sejf( std::string && napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
+	Sejf( Sejf && rhs );
 	void operator=( Sejf && rhs );
 	friend std::ostream & operator<<( std::ostream & wyjscie,
 									const Kontroler & k );
-	Sejf(Sejf && rhs);
-
 	void operator+=( int x );
 	void operator-=( int x );
 	void operator*=( int x );
 	int16_t operator[]( int x );
-
 	const Kontroler kontroler() const;
 
 private:
@@ -46,9 +44,10 @@ private:
 	// kontrolel (liczba dostepow, manipulacje, wlamanie) pozostaje wraz
 	// z sejfem
 	std::string napis;
-	void setLiczba( int x );
-	int liczba;
+	unsigned long long liczba;
     bool wlamanie, manipulacja;
+    void setLiczba( int x );
+    void init( int liczba );
 
 };
 
