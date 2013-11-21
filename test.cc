@@ -106,6 +106,18 @@ void swap_test()
 	assert( !s3.kontroler() );
 	assert( s4.kontroler() );
 
+	/* case 3 */
+	Sejf a("A", 1), b("B", 1);
+	b += 1;
+	auto k = b.kontroler();
+	a[0]; a[0];
+	swap(a, b);
+	string res,res2;
+	stringstream ss;
+	ss << k;
+	ss >> res;
+	ss >> res2;
+	assert ( res2.compare( "WLAMANIE" ) == 0 );
 
 	//to powinno dawac blad kompilacji (odkomnetowac i sprawdzic!):
 	//Sejf s3( s2 );

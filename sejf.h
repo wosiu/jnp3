@@ -26,7 +26,7 @@ friend class Kontroler;
 
 public:
 	// W przypadku próby tworzenia niepoprawnego sejfu (o ujemnej liczbie
-	// dostepow) zostaje stworzony sejf o domyślnej liczbe dostępów.
+	// dostepow) zostaje rzucony wyjatek.
 	Sejf( const std::string & napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
 	Sejf( std::string && napis, int liczba = ILOSC_DOMYSLNA_DOSTEPOW );
 	Sejf( Sejf && rhs );
@@ -36,7 +36,7 @@ public:
 	void operator+=( int x );
 	void operator-=( int x );
 	void operator*=( int x );
-	int16_t operator[]( int x );
+	int16_t operator[]( size_t x );
 	const Kontroler kontroler() const;
 
 private:
