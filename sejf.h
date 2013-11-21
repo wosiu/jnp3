@@ -11,6 +11,7 @@
 
 #include <string>
 #include <iostream>
+#include <stdexcept>
 #include "kontroler.h"
 
 const static unsigned long long LIMIT_DOSTEPOW = 1000000ULL;

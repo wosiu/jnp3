@@ -18,7 +18,7 @@ Sejf::Sejf( std::string && napis, int liczba ) : napis( move( napis ) ),
 void Sejf::init( int liczba )
 {
 	if ( liczba < 0 || (unsigned long long)liczba > LIMIT_DOSTEPOW ){
-		liczba = ILOSC_DOMYSLNA_DOSTEPOW;
+		throw range_error ("Niepoprawna liczba dostepow\n");
 	}
 	this->liczba = liczba;
 }

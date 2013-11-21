@@ -4,6 +4,7 @@
 #include <string>
 #include <typeinfo>
 #include <algorithm>
+#include <stdexcept>
 #include "sejf.h"
 #include "kontroler.h"
 
@@ -112,11 +113,44 @@ void swap_test()
 	//Sejf s3( move(s2) );
 }
 
+void exception_test(){
+
+    try{
+        Sejf s_ujemny("kartofel", -1);
+    }
+    catch (const range_error & oor) {
+        cerr << "Zlapano sejf ujemny.    \tERROR: " << oor.what();
+    }
+
+    try{
+        Sejf s_za_duzy("kanapka", 1000001LL);
+    }
+    catch (const range_error & oor) {
+        cerr << "Zlapano sejf za_duzy.   \tERROR: " << oor.what();
+    }
+
+    try{
+        Sejf s_ujemny_duzy("indyk", -999999999LL);
+    }
+    catch (const range_error & oor) {
+        cerr << "Zlapano sejf ujemny_duzy. \tERROR: " << oor.what();
+    }
+
+    try{
+        Sejf s_ujemny_duzy("orteoblasty", 999999999LL);
+    }
+    catch (const range_error & oor) {
+        cerr << "Zlapano sejf duzy_duzy. \tERROR: " << oor.what();
+    }
+    cerr <<endl;
+}
+
 int main(){
 
 	kontroler_test();
 	bool_test();
 	swap_test();
+	exception_test();
 
     cout << "OK :)" << endl;
 	return 0;
