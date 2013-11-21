@@ -332,13 +332,23 @@ On 2013-11-10 00:31, Maciej Szeszko wrote:
     ss << k;
     assert(ss.str() == "ALARM: WLAMANIE\n");
 
+	int niezlapano = 1;
+	try{
+	    Sejf c("A", -3); // Nie powinno sie dac skonstruowac
+		assert(c.kontroler());
+    }
+    catch (const range_error & oor) {
+        niezlapano = 0;
+	}
+	if ( niezlapano ) {
+		assert ( false );
+	}
 
-    Sejf c("A", -3); // Nie powinno sie dac skonstruowac
     // sejfu o ujemnej maksymalnej liczbie dostepow
     // Ponoc mozna to rozwiazywac na rozne sposoby
     // np. rzucac wyjatek. Ale jesli konstruktor przyjmuje
     // unsigned, to takie sejf zdaje sie moze sie stworzyc
-    assert(c.kontroler());
+
     }
 
 // Hubert Tarasiuk w dniu Saturday, 16 November 2013, 21:43 napisaĹ(a)
